@@ -26,7 +26,24 @@
       </div>
     </nav>
     <!-- NAVBAR ENDS HERE -->
-
+    <div
+      class="toast position-fixed top-0 end-0 loginSuccess"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      style="z-index: 11"
+    >
+      <div class="toast-header">
+        <strong class="me-auto">Task Manager</strong>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div id="toast-body" class="toast-body"></div>
+    </div>
     <!-- Form starts here -->
     <div class="container">
       <div class="row justify-content-evenly">
@@ -132,5 +149,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="index.js"></script>
+    <!-- <script src="login.js"></script> -->
   </body>
 </html>

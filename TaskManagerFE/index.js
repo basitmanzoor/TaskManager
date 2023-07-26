@@ -5,7 +5,31 @@ window.addEventListener("load", () => {
   }
 });
 
+// window.onload = (event) => {
+//   const toastText = document.querySelector(".toast-body");
+//   const myAlert = document.querySelector(".toast");
+//   const beAlert = new bootstrap.Toast(myAlert);
+//   toastText.textContent = "Successfully logged in";
+//   beAlert.show();
+// };
 // Fetch tasks from the API
+
+const success = sessionStorage.getItem("success");
+console.log(success);
+
+if (success) {
+  const toastText = document.querySelector("#toast-body");
+  console.log(toastText);
+  const myAlert = document.querySelector(".toast");
+  const beAlert = new bootstrap.Toast(myAlert);
+  toastText.textContent = "Successfully logged in";
+  beAlert.show();
+
+  sessionStorage.removeItem("success");
+}
+
+// console.log();
+
 fetch("http://127.0.0.1:3000/api/v1/tasks", {
   headers: {
     "Content-Type": "application/json",
@@ -20,6 +44,7 @@ fetch("http://127.0.0.1:3000/api/v1/tasks", {
     showUsername.textContent = "Welcome! 👷‍♂️ " + data.data.user.name;
     // Iterate over the tasks and create HTML elements dynamically
     data.data.tasks.forEach((task) => {
+      //HTML dynamic elements
       const card = document.createElement("div");
       const listItem = document.createElement("p");
       const descItem = document.createElement("span");
@@ -155,7 +180,6 @@ const updateTask = async (task) => {
     }
   );
   const data = await response.json();
-  alert("Task updated successfully");
 };
 const updateTaskForm = document.getElementById("updateTaskForm");
 
@@ -181,5 +205,4 @@ logoutButton.addEventListener("click", async (e) => {
   localStorage.removeItem("token");
   // console.log(localStorage.getItem("token"));
   window.location.replace("login.html");
-  alert("User successfully logged out");
 });

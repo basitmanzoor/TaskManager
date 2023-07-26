@@ -15,14 +15,20 @@ const loginUser = async (task) => {
   localStorage.setItem("token", data.token);
   console.log(localStorage.getItem("token"));
   if (data.status === "success") {
+    sessionStorage.setItem("success", true);
     window.location.replace("index.html");
-    alert("User successfully logged in");
   } else {
-    alert(data.message);
+    const toastText = document.querySelector("#toast-body");
+    console.log(toastText);
+    const myAlert = document.querySelector(".toast");
+    const beAlert = new bootstrap.Toast(myAlert);
+    toastText.textContent = data.message;
+    beAlert.show();
+    // alert(data.message);
   }
 };
 
-login.addEventListener("submit", async (e) => {
+login?.addEventListener("submit", async (e) => {
   e.preventDefault();
   const emailUser = loginForm.loginEmail.value;
   const passwordUser = loginForm.loginPassword.value;

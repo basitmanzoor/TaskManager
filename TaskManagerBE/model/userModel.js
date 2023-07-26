@@ -38,9 +38,21 @@ const userSchema = new mongoose.Schema({
   },
   tasks: [
     {
-      name: String,
-      description: String,
-      completed: Boolean,
+      name: {
+        type: String,
+        required: [true, "A task must have a name"],
+        unique: true,
+        trim: true,
+      },
+      description: {
+        type: String,
+        // required: [true, "A task must have a description"],
+      },
+      completed: {
+        type: Boolean,
+        default: false,
+        // required: [true, "A task must have a status"],
+      },
     },
   ],
   passwordChangedAt: Date,

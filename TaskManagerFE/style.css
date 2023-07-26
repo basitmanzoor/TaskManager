@@ -108,3 +108,10 @@ body {
   font-size: 22px;
   padding: 10px;
 }
+
+.loginFail {
+  background-color: red;
+}
+.loginSuccess {
+  background-color: rgb(38, 248, 19);
+}
